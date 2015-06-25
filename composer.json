@@ -1,0 +1,23 @@
+{
+	"name": "eggbe/server-bridge",
+	"version": "1.0.0",
+	"type": "library",
+	"keywords": ["client", "server", "communication", "library"],
+	"description": "Server part of the client-server communications library.",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "hacpaka",
+			"email": "hacpaka@eggbe.com"
+		}
+	],
+	"require": {
+		"php": ">=5.3.0",
+		"eggbe/helpers": "dev-master"
+	},
+	"autoload": {
+		"psr-0": {
+			"Eggbe\\ServerBridge": "src/"
+		}
+	}
+}
