@@ -28,7 +28,7 @@ class Bridge {
 	 * @return string
 	 * @throws \Exception
 	 */
-	public  function  dispatch(array $Request){
+	public function dispatch(array $Request){
 		$Request = array_change_key_case($Request, CASE_LOWER);
 
 		try {
