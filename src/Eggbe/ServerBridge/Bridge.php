@@ -32,9 +32,16 @@ class Bridge {
 		$Request = array_change_key_case($Request, CASE_LOWER);
 
 		try {
-			foreach ($this->Bindings as $Keys => $Binding) {
-				$Keys = explode(',', $Keys);
+			foreach ($this->Bindings as $keys => $Binding) {
+
+				$Keys = array_filter(explode(',', $keys), function($key){
+					return !preg_match('/^:/', $key); });
+
 				if (count(array_diff($Keys, array_keys($Request))) < 1) {
+
+					$Keys = array_map(function($key){
+						return preg_replace('/^:/', null, $key); }, explode(',', $keys));
+
 					foreach ($Binding as $Callback) {
 						if (!is_null(($Response = $Response = call_user_func_array($Callback, Arr::like($Request, $Keys))))) {
 							return json_encode(['error' => false,
