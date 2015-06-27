@@ -35,20 +35,28 @@ class Bridge {
 			foreach ($this->Bindings as $keys => $Binding) {
 
 				$Keys = array_filter(explode(',', $keys), function($key){
-					return !preg_match('/^:/', $key); });
+					return !preg_match('/^[:!]/', $key); });
 
 				if (count(array_diff($Keys, array_keys($Request))) < 1) {
 
-					$Keys = array_map(function($key){
-						return preg_replace('/^:/', null, $key); }, explode(',', $keys));
+					$Keys = array_map(function($key){ return preg_replace('/^!/', null, $key); },
+						array_filter(explode(',', $keys), function($key){ return preg_match('/^!/', $key); }));
 
-					foreach ($Binding as $Callback) {
-						if (!is_null(($Response = $Response = call_user_func_array($Callback, Arr::like($Request, $Keys))))) {
-							return json_encode(['error' => false,
-								'data' => $Response]);
+					if (count($Keys) < 1 || count(array_diff($Keys, array_keys($Request))) > 0) {
+
+						$Keys = array_map(function ($key) { return preg_replace('/^:/', null, $key); },
+							array_filter(explode(',', $keys), function ($key) { return !preg_match('/^!/', $key); }));
+
+						foreach ($Binding as $Callback) {
+							if (!is_null(($Response = $Response = call_user_func_array($Callback, Arr::like($Request, $Keys))))) {
+								return json_encode(['error' => false,
+									'data' => $Response]);
+							}
 						}
+
 					}
 				}
+
 			}
 		} catch (\Exception $Exception) {
 			return json_encode(['error' => false,
