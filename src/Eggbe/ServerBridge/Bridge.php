@@ -31,16 +31,16 @@ class Bridge {
 	public function dispatch(array $Request){
 		$Request = array_change_key_case($Request, CASE_LOWER);
 
-
-		$this->on('!layout', function () {
-			throw new \Exception('Undefined layout');
-		});
-
-		$this->on('!method', function () {
-			throw new \Exception('Undefined method!');
-		});
-
 		try {
+
+			$this->on('!namespace', function () {
+				throw new \Exception('Undefined namespace');
+			});
+
+			$this->on('!method', function () {
+				throw new \Exception('Undefined method!');
+			});
+
 			foreach ($this->Bindings as $keys => $Binding) {
 
 				$Keys = array_filter(explode(',', $keys), function($key){
@@ -72,7 +72,8 @@ class Bridge {
 				'message' => $Exception->getMessage()]);
 		}
 
-		return false;
+		return json_encode(['error' => false,
+			'data' => null]);
 	}
 
 }
