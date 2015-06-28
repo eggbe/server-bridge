@@ -31,6 +31,15 @@ class Bridge {
 	public function dispatch(array $Request){
 		$Request = array_change_key_case($Request, CASE_LOWER);
 
+
+		$this->on('!layout', function () {
+			throw new \Exception('Undefined layout');
+		});
+
+		$this->on('!method', function () {
+			throw new \Exception('Undefined method!');
+		});
+
 		try {
 			foreach ($this->Bindings as $keys => $Binding) {
 
