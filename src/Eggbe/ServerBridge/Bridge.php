@@ -30,7 +30,6 @@ class Bridge {
 	 */
 	public function dispatch(array $Request){
 		$Request = array_change_key_case($Request, CASE_LOWER);
-
 		try {
 
 			$this->on('!namespace', function () {
@@ -68,7 +67,7 @@ class Bridge {
 
 			}
 		} catch (\Exception $Exception) {
-			return json_encode(['error' => false,
+			return json_encode(['error' => true,
 				'message' => $Exception->getMessage()]);
 		}
 
