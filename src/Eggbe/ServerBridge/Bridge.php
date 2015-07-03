@@ -1,7 +1,7 @@
 <?php
 namespace Eggbe\ServerBridge;
 
-use \Eggbe\Helpers\Arr;
+use \Eggbe\Helper\Arr;
 
 class Bridge {
 
