@@ -1,6 +1,7 @@
 * 2.0.0 (2016-07-24)
 
   * Autoload method was changed to psr-4
+  * All code was totally refactored.
 
 
 * 1.1.0
