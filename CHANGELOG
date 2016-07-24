@@ -1,6 +1,12 @@
+* 2.0.0 (2016-07-24)
+
+  * Autoload method was changed to psr-4
+
+
 * 1.1.0
 
- * added the negative binding for values that not exists
+ * added the ability to bind callbacks for values that not exists
+
 
 * 1.0.0
 
