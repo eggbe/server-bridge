@@ -60,15 +60,14 @@ class Bridge {
 					 * This list are always includes all positive conditions and conditions
 					 * started by special colon character.
 					 */
-					$Request = Arr::like($Request, array_map(function ($key) { return preg_replace('/^:/', null, $key); },
+					$Values = Arr::like($Request, array_map(function ($key) { return preg_replace('/^:/', null, $key); },
 						array_filter($Rules, function ($key) { return !preg_match('/^!/', $key); })));
 
 					foreach ($Calbacks as $Callback) {
-						if (!is_null(($response = call_user_func_array($Callback, $Request)))) {
+						if (!is_null(($response = call_user_func_array($Callback, $Values)))) {
 							return $response;
 						}
 					}
-
 				}
 			}
 
