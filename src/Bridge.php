@@ -74,10 +74,10 @@ class Bridge {
 		}
 
 		/**
-		 * If none of callbacks returned any non-empty value
-		 * then boolean false will be returned by default.
+		 * If any non-empty value wasn't obtained from callbacks
+		 * then null value will be returned by default.
 		 */
-		return false;
+		return null;
 	}
 
 }

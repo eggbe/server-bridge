@@ -1,3 +1,8 @@
+* 2.0.1 (2016-10-21)
+
+  * If any non-empty value wasn't obtained from callbacks then the null value will be returned.
+
+
 * 2.0.0 (2016-07-24)
 
   * Autoload method was changed to psr-4
