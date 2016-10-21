@@ -75,7 +75,7 @@ class Bridge {
 
 		/**
 		 * If any non-empty value wasn't obtained from callbacks
-		 * then null value will be returned by default.
+		 * then the null value will be returned by default.
 		 */
 		return null;
 	}
