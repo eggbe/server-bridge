@@ -1,6 +1,5 @@
 {
 	"name": "eggbe/server-bridge",
-	"version": "2.0.1",
 	"type": "library",
 	"keywords": ["api", "server-side", "server-to-server", "high-performance"],
 	"description": "The server part of the server-to-server communications library.",
