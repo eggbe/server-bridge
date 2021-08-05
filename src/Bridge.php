@@ -64,7 +64,7 @@ class Bridge {
 						array_filter($Rules, function ($key) { return !preg_match('/^!/', $key); })));
 
 					foreach ($Calbacks as $Callback) {
-						if (!is_null(($response = call_user_func_array($Callback, $Values)))) {
+						if (!is_null(($response = call_user_func_array($Callback, array_values($Values))))) {					
 							return $response;
 						}
 					}
